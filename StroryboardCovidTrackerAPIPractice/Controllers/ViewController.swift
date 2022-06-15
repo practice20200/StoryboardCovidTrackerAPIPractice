@@ -9,12 +9,32 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    private var scope: APICaller.DataScop = .national
+    
+    lazy var barbuttonTitle : String = {
+        switch scope{
+            case .national: return "National"
+            case .state(let state): return state.name
+        }
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         view.backgroundColor = .systemBackground
         title = "COVID CASE"
         navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let nationalBTN = UIBarButtonItem(title: barbuttonTitle, style: .done, target: self, action: #selector(nationalHandler))
+        navigationItem.rightBarButtonItem = nationalBTN
+    }
+    
+    
+    @objc func nationalHandler(){
+         let vc = FilterViewController()
+         let navVC = UINavigationController(rootViewController: vc)
+         present(navVC, animated: true)
     }
 
 
