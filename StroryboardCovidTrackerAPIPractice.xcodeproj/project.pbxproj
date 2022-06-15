@@ -12,6 +12,7 @@
 		B3506DF7285A4AAE00B76E3B /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3506DF6285A4AAE00B76E3B /* State.swift */; };
 		B3506DFD285A4CDF00B76E3B /* StateListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3506DFC285A4CDF00B76E3B /* StateListResponse.swift */; };
 		B3506E00285A5C0A00B76E3B /* FilterViewControllerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3506DFF285A5C0A00B76E3B /* FilterViewControllerTableViewCell.swift */; };
+		B3506E02285A734200B76E3B /* CovidDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3506E01285A734200B76E3B /* CovidDataResponse.swift */; };
 		B3C378452859A84C00DF660A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C378442859A84C00DF660A /* AppDelegate.swift */; };
 		B3C378472859A84C00DF660A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C378462859A84C00DF660A /* SceneDelegate.swift */; };
 		B3C378492859A84C00DF660A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C378482859A84C00DF660A /* ViewController.swift */; };
@@ -26,6 +27,7 @@
 		B3506DF6285A4AAE00B76E3B /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		B3506DFC285A4CDF00B76E3B /* StateListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateListResponse.swift; sourceTree = "<group>"; };
 		B3506DFF285A5C0A00B76E3B /* FilterViewControllerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewControllerTableViewCell.swift; sourceTree = "<group>"; };
+		B3506E01285A734200B76E3B /* CovidDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidDataResponse.swift; sourceTree = "<group>"; };
 		B3C378412859A84C00DF660A /* StroryboardCovidTrackerAPIPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StroryboardCovidTrackerAPIPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C378442859A84C00DF660A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3C378462859A84C00DF660A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			children = (
 				B3506DF6285A4AAE00B76E3B /* State.swift */,
 				B3506DFC285A4CDF00B76E3B /* StateListResponse.swift */,
+				B3506E01285A734200B76E3B /* CovidDataResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				B3506DF32859AA8500B76E3B /* FilterViewController.swift in Sources */,
 				B3C378472859A84C00DF660A /* SceneDelegate.swift in Sources */,
 				B3506DF7285A4AAE00B76E3B /* State.swift in Sources */,
+				B3506E02285A734200B76E3B /* CovidDataResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

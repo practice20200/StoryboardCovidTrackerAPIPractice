@@ -20,21 +20,22 @@ class APICaller{
         case state(State)
     }
     
-    public func getCovidData(for scope: DataScop, completion: @escaping((Result<String, Error>) -> Void)){
+    public func getCovidData(for scope: DataScop, completion: @escaping((Result<[DayData], Error>) -> Void)){
         let urlString: String
         switch scope{
             case .national: urlString = "https://api.covidtracking.com/v2/us/daily.json"
             case .state(let state): urlString = "https://api.covidtracking.com/v2/states/\(state.state_code.lowercased())/daily.json"
         }
         
-        guard let url = Constants.allStatesURL else { return }
+        guard let url = URL(string: urlString) else { return }
 
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else { return }
 
             do {
-                let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                print("SUCCESS result: \(result)")
+//                let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                let result = try JSONDecoder().decode(CovidDataResponse.self, from: data)
+                print("SUCCESS result: \(result)|| resultcount: \((result).data.count)")
               
             }
             catch{
