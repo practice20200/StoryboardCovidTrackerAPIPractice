@@ -34,6 +34,7 @@ class APICaller{
             }
             catch{
                 completion(.failure(error))
+                print("Error: \(error.localizedDescription)")
             }
         }
         task.resume()
