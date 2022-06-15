@@ -26,10 +26,20 @@ class ViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        fetchData()
+        
         let nationalBTN = UIBarButtonItem(title: barbuttonTitle, style: .done, target: self, action: #selector(nationalHandler))
         navigationItem.rightBarButtonItem = nationalBTN
     }
     
+    private func fetchData(){
+        APICaller.shared.getCovidData(for: scope) { result in
+            switch result {
+            case .success(let data): print("Success ftechData() in ViewController")
+            case .failure(let error): print("Error fetchData in ViewController:): \(error.localizedDescription)")
+            }
+        }
+    }
     
     @objc func nationalHandler(){
          let vc = FilterViewController()

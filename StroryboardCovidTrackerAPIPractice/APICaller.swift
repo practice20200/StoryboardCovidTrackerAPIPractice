@@ -12,6 +12,7 @@ class APICaller{
     
     private struct Constants{
         static let allStatesURL = URL(string: "https://api.covidtracking.com/v2/states.json")
+        
     }
     
     enum DataScop{
@@ -19,7 +20,30 @@ class APICaller{
         case state(State)
     }
     
-    public func getCovidData(for scope: Data, completion: @escaping((Result<String, Error>) -> Void)){}
+    public func getCovidData(for scope: DataScop, completion: @escaping((Result<String, Error>) -> Void)){
+        let urlString: String
+        switch scope{
+            case .national: urlString = "https://api.covidtracking.com/v2/us/daily.json"
+            case .state(let state): urlString = "https://api.covidtracking.com/v2/states/\(state.state_code.lowercased())/daily.json"
+        }
+        
+        guard let url = Constants.allStatesURL else { return }
+
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data, error == nil else { return }
+
+            do {
+                let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                print("SUCCESS result: \(result)")
+              
+            }
+            catch{
+                completion(.failure(error))
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+        task.resume()
+    }
     
     public func getStateList(completion: @escaping((Result<[State], Error>) -> Void)){
         guard let url = Constants.allStatesURL else { return }
