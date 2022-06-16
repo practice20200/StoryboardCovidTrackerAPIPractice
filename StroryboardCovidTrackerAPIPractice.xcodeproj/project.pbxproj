@@ -16,6 +16,8 @@
 		B3506E04285A7A3000B76E3B /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3506E03285A7A3000B76E3B /* DateFormatter.swift */; };
 		B3506E06285B9C2C00B76E3B /* NumberFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3506E05285B9C2C00B76E3B /* NumberFormat.swift */; };
 		B3506E09285B9D7500B76E3B /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = B3506E08285B9D7500B76E3B /* Charts */; };
+		B3506E0C285BB81D00B76E3B /* Elements in Frameworks */ = {isa = PBXBuildFile; productRef = B3506E0B285BB81D00B76E3B /* Elements */; };
+		B3506E0E285BBB6F00B76E3B /* ViewControllerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3506E0D285BBB6F00B76E3B /* ViewControllerTableViewCell.swift */; };
 		B3C378452859A84C00DF660A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C378442859A84C00DF660A /* AppDelegate.swift */; };
 		B3C378472859A84C00DF660A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C378462859A84C00DF660A /* SceneDelegate.swift */; };
 		B3C378492859A84C00DF660A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C378482859A84C00DF660A /* ViewController.swift */; };
@@ -33,6 +35,7 @@
 		B3506E01285A734200B76E3B /* CovidDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidDataResponse.swift; sourceTree = "<group>"; };
 		B3506E03285A7A3000B76E3B /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		B3506E05285B9C2C00B76E3B /* NumberFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormat.swift; sourceTree = "<group>"; };
+		B3506E0D285BBB6F00B76E3B /* ViewControllerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTableViewCell.swift; sourceTree = "<group>"; };
 		B3C378412859A84C00DF660A /* StroryboardCovidTrackerAPIPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StroryboardCovidTrackerAPIPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C378442859A84C00DF660A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3C378462859A84C00DF660A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3506E09285B9D7500B76E3B /* Charts in Frameworks */,
+				B3506E0C285BB81D00B76E3B /* Elements in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				B3506DFF285A5C0A00B76E3B /* FilterViewControllerTableViewCell.swift */,
+				B3506E0D285BBB6F00B76E3B /* ViewControllerTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 			name = StroryboardCovidTrackerAPIPractice;
 			packageProductDependencies = (
 				B3506E08285B9D7500B76E3B /* Charts */,
+				B3506E0B285BB81D00B76E3B /* Elements */,
 			);
 			productName = StroryboardCovidTrackerAPIPractice;
 			productReference = B3C378412859A84C00DF660A /* StroryboardCovidTrackerAPIPractice.app */;
@@ -182,6 +188,7 @@
 			mainGroup = B3C378382859A84C00DF660A;
 			packageReferences = (
 				B3506E07285B9D7500B76E3B /* XCRemoteSwiftPackageReference "Charts" */,
+				B3506E0A285BB81D00B76E3B /* XCRemoteSwiftPackageReference "ElementKit" */,
 			);
 			productRefGroup = B3C378422859A84C00DF660A /* Products */;
 			projectDirPath = "";
@@ -212,6 +219,7 @@
 			files = (
 				B3506DF5285A48C800B76E3B /* APICaller.swift in Sources */,
 				B3C378492859A84C00DF660A /* ViewController.swift in Sources */,
+				B3506E0E285BBB6F00B76E3B /* ViewControllerTableViewCell.swift in Sources */,
 				B3506E00285A5C0A00B76E3B /* FilterViewControllerTableViewCell.swift in Sources */,
 				B3C378452859A84C00DF660A /* AppDelegate.swift in Sources */,
 				B3506E04285A7A3000B76E3B /* DateFormatter.swift in Sources */,
@@ -446,6 +454,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		B3506E0A285BB81D00B76E3B /* XCRemoteSwiftPackageReference "ElementKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/practice20200/ElementKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -453,6 +469,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B3506E07285B9D7500B76E3B /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
+		};
+		B3506E0B285BB81D00B76E3B /* Elements */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3506E0A285BB81D00B76E3B /* XCRemoteSwiftPackageReference "ElementKit" */;
+			productName = Elements;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -10,9 +10,10 @@ import UIKit
 class FilterViewController: UIViewController {
     
     var completion: ((State) -> Void)?
+    
     private let tableView: UITableView = {
         let table = UITableView()
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(FilterViewControllerTableViewCell.self, forCellReuseIdentifier: "cell")
         table.backgroundColor = .systemYellow
         return table
     }()
@@ -80,8 +81,9 @@ extension FilterViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let state = states[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = state.name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FilterViewControllerTableViewCell
+//        cell.textLabel?.text = state.name
+        cell.numberLabel.text = state.name
         return cell
     }
     

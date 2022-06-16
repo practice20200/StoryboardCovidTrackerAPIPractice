@@ -8,6 +8,15 @@
         "revision" : "66546404a6739173b8e436ab6bc1f2897cd08594",
         "version" : "3.6.0"
       }
+    },
+    {
+      "identity" : "elementkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/practice20200/ElementKit",
+      "state" : {
+        "revision" : "bff28f2936db5b9471a312daa5cba06159bada07",
+        "version" : "1.0.1"
+      }
     }
   ],
   "version" : 2

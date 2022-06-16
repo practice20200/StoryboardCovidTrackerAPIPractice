@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     
     private var tableView: UITableView = {
         let table = UITableView()
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(ViewControllerTableViewCell.self, forCellReuseIdentifier: "cell")
         table.backgroundColor = .systemYellow
         return table
     }()
@@ -72,6 +72,7 @@ class ViewController: UIViewController {
     private func createGraph(){
         let headerView = UIView( frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.width/1.5))
         headerView.clipsToBounds = true
+        view.backgroundColor = .systemBackground
         
         let chart = BarChartView(frame:  CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.width/1.5))
         let set = dayData.prefix(30)
@@ -97,7 +98,7 @@ class ViewController: UIViewController {
         chart.backgroundColor = .systemBackground
         chart.doubleTapToZoomEnabled = false
         chart.animate(xAxisDuration: 0.0, yAxisDuration: 2.0, easingOption: .easeOutQuart)
-        chart.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+//        chart.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         
         
         headerView.addSubview(chart)
@@ -129,9 +130,11 @@ extension ViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ViewControllerTableViewCell
         let data = dayData[indexPath.row]
-        cell.textLabel?.text = createText(with: data)
+        cell.dateLable.text = DateFormatter.modifiedStyleDayFormatter.string(from: data.date)
+        cell.numberLabel.text = String(data.count)
+        
         return cell
     }
     
@@ -143,5 +146,19 @@ extension ViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Date / Number"
     }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = .secondarySystemBackground
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
+    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let uiView = UIView()
+//        uiView.backgroundColor = .systemBackground
+//    }
 }
 
