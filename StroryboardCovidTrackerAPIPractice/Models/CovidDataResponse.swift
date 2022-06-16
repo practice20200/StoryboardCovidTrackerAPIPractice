@@ -13,7 +13,7 @@ struct CovidDataResponse: Codable{
 }
 
 struct CovidDayData: Codable{
-    let cases: CovidCases?
+    let cases: CovidCases
     let date: String
 }
 
