@@ -74,7 +74,6 @@ class ViewController: UIViewController {
         headerView.clipsToBounds = true
         
         let chart = BarChartView(frame:  CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.width/1.5))
-        
         let set = dayData.prefix(30)
         var entries: [BarChartDataEntry] = []
         
@@ -83,11 +82,23 @@ class ViewController: UIViewController {
             entries.append(.init(x: Double(index), y: Double(data.count)))
         }
         
-        print("\(entries.count)==========entries================")
         let dataSet = BarChartDataSet( entries: entries )
-        dataSet.colors = ChartColorTemplates.pastel()
         let data: BarChartData = BarChartData(dataSet: dataSet)
         chart.data =  data
+        
+        //Layout
+        dataSet.colors = ChartColorTemplates.pastel()
+        chart.rightAxis.enabled = false
+        chart.xAxis.drawGridLinesEnabled = false
+        chart.xAxis.drawAxisLineEnabled = false
+        chart.xAxis.labelPosition = .bottom
+        chart.dragDecelerationEnabled = true
+        chart.dragDecelerationFrictionCoef = 0.6
+        chart.backgroundColor = .systemBackground
+        chart.doubleTapToZoomEnabled = false
+        chart.animate(xAxisDuration: 0.0, yAxisDuration: 2.0, easingOption: .easeOutQuart)
+        chart.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        
         
         headerView.addSubview(chart)
         tableView.tableHeaderView = headerView
@@ -128,4 +139,9 @@ extension ViewController: UITableViewDataSource{
         let dateString = DateFormatter.modifiedStyleDayFormatter.string(from: data.date)
         return "\(dateString): \(data.count)"
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Date / Number"
+    }
 }
+

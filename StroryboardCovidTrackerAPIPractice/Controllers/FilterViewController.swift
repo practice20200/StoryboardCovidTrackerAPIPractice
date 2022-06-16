@@ -13,7 +13,7 @@ class FilterViewController: UIViewController {
     private let tableView: UITableView = {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        table.backgroundColor = .red
+        table.backgroundColor = .systemYellow
         return table
     }()
     
