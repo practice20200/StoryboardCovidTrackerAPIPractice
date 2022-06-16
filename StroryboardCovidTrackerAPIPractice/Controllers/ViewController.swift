@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Charts
 
 class ViewController: UIViewController {
 
@@ -29,6 +30,7 @@ class ViewController: UIViewController {
         didSet{
             DispatchQueue.main.async{ [weak self] in
                 self?.tableView.reloadData()
+                self?.createGraph()
             }
         }
     }
@@ -44,8 +46,7 @@ class ViewController: UIViewController {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        
-        
+  
         
         let nationalBTN = UIBarButtonItem(title: barbuttonTitle, style: .done, target: self, action: #selector(nationalHandler))
         navigationItem.rightBarButtonItem = nationalBTN
@@ -68,12 +69,40 @@ class ViewController: UIViewController {
         }
     }
     
+    private func createGraph(){
+        let headerView = UIView( frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.width/1.5))
+        headerView.clipsToBounds = true
+        
+        let chart = BarChartView(frame:  CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.width/1.5))
+        
+        let set = dayData.prefix(30)
+        var entries: [BarChartDataEntry] = []
+        
+        for index in 0 ..< set.count {
+            let data = set[index]
+            entries.append(.init(x: Double(index), y: Double(data.count)))
+        }
+        
+        print("\(entries.count)==========entries================")
+        let dataSet = BarChartDataSet( entries: entries )
+        dataSet.colors = ChartColorTemplates.pastel()
+        let data: BarChartData = BarChartData(dataSet: dataSet)
+        chart.data =  data
+        
+        headerView.addSubview(chart)
+        tableView.tableHeaderView = headerView
+    }
+    
     @objc func nationalHandler(){
          let vc = FilterViewController()
+         vc.completion = { [weak self] state in
+            self?.scope = .state(state)
+            self?.fetchData()
+            self?.barbuttonTitle = state.name
+         }
          let navVC = UINavigationController(rootViewController: vc)
          present(navVC, animated: true)
     }
-
 
 }
 

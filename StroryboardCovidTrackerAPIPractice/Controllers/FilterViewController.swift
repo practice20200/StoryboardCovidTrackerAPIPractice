@@ -9,7 +9,7 @@ import UIKit
 
 class FilterViewController: UIViewController {
     
-    private var completion: ((State) -> Void)?
+    var completion: ((State) -> Void)?
     private let tableView: UITableView = {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -19,7 +19,6 @@ class FilterViewController: UIViewController {
     
     private var states: [State] = [] {
         didSet{
-            
             DispatchQueue.main.async { [weak self] in
                 self?.tableView.reloadData()
             }
